@@ -1,0 +1,17 @@
+@import "../../styles/colors";
+
+.container {
+  background-color: $fundo-produto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+
+  img {
+    cursor: pointer;
+  }
+
+  h2 {
+    padding: 0.5rem 0rem;
+  }
+}

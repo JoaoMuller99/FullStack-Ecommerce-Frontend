@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 // Components
 import Loader from "../components/loader/loader";
+import Galeria from "../components/galeria";
+import Produto from "../components/produto";
 // Query for URQL
 import { useQuery } from "urql";
 import { PRODUCT_QUERY } from "../lib/query";
@@ -16,18 +17,14 @@ const Home: NextPage = () => {
 
   if (error) return <div>Erro: {error.message}</div>;
 
-  console.log(data);
-
   return (
-    <>
-      <Head>
-        <title>The iPad Store</title>
-        <meta name="description" content="The best place to buy your iPad" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>{data && data.products.data.map((produto) => <div key={produto.attributes.slug}>{produto.attributes.title}</div>)}</main>
-    </>
+    <Galeria>
+      {data &&
+        data.products.data.map((produto) => {
+          const id = produto.attributes.slug;
+          return <Produto key={id} produto={produto.attributes} />;
+        })}
+    </Galeria>
   );
 };
 

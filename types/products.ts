@@ -24,16 +24,12 @@ interface ImagemObj {
   };
 }
 
-interface DadosProduto {
+export type DadosProduto = {
   description: string;
   image: ImagemObj;
   price: number;
   slug: string;
   title: string;
-}
-
-interface Dados {
-  attributes: DadosProduto;
-}
-
+};
+export type Dados = { attributes: DadosProduto };
 export type Produtos = { products: { data: Dados[] } };
