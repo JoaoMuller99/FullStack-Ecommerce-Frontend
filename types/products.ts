@@ -1,4 +1,4 @@
-interface Imagem {
+export type Imagem = {
   ext: string;
   hash: string;
   height: number;
@@ -9,7 +9,7 @@ interface Imagem {
   size: number;
   url: string;
   width: number;
-}
+};
 
 interface ImagemObj {
   data: {

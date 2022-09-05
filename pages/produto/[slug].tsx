@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
 // Components
 import Loader from "../../components/loader";
+import Galeria from "../../components/galeria";
+import ProdutoDetalhado from "../../components/detalhes_produto";
 // Query for URQL
 import { useQuery } from "urql";
 import { GET_PRODUCT_QUERY } from "../../lib/query";
 // Types
-import { DadosProduto, Produtos } from "../../types/products";
+import { DadosProduto, Imagem, Produtos } from "../../types/products";
 
 export default function DetalhesProduto() {
   const router = useRouter();
@@ -19,29 +20,30 @@ export default function DetalhesProduto() {
   if (error) return <div>Erro: {error.message}</div>;
 
   let dadosProduto: DadosProduto | undefined;
+  let dadosImagem: Imagem | undefined;
 
   if (data) dadosProduto = (data.products.data[0] || {}).attributes;
+
+  if (dadosProduto) dadosImagem = dadosProduto.image.data.attributes.formats.medium;
 
   console.log(data);
 
   return (
-    <div>
-      {dadosProduto && (
+    <Galeria>
+      {dadosProduto && dadosImagem ? (
+        <ProdutoDetalhado
+          imagem={dadosImagem}
+          titulo={dadosProduto.title}
+          descricao={dadosProduto.description}
+          preco={dadosProduto.price}
+          slug={dadosProduto.slug}
+        />
+      ) : (
         <>
-          <Image src="/" width={1} height={1} alt="" />
-          <div>
-            <h3>{dadosProduto.title}</h3>
-            <p>{dadosProduto.description}</p>
-          </div>
-          <div>
-            <span>Quantity</span>
-            <button>Plus</button>
-            <p>0</p>
-            <button>Minus</button>
-          </div>
-          <button>Adicionar ao carrinho</button>
+          <Loader />
+          {`${router.replace("/404")}`}
         </>
       )}
-    </div>
+    </Galeria>
   );
 }
