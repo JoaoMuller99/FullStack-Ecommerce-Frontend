@@ -1,6 +1,7 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
-
+// Components
+import Nav from "../components/nav";
 // Lib
 import { Provider, createClient } from "urql";
 // Global styles
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="The best place to buy your iPad" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Nav />
       <Component {...pageProps} />
     </Provider>
   );
