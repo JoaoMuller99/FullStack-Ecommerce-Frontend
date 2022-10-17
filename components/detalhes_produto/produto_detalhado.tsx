@@ -2,6 +2,8 @@ import Image from "next/image";
 // Types
 import { Imagem } from "../../types/products";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+// Context
+import { useStateContext } from "../../lib/context";
 // Styles
 import styles from "./produto_detalhado.module.scss";
 
@@ -14,6 +16,8 @@ interface Props {
 }
 
 export default function ProdutoDetalhado(props: Props) {
+  const { quantidade, aumentaQuantidade, diminuiQuantidade } = useStateContext();
+
   return (
     <div className={styles.container}>
       {props.imagem && (
@@ -27,11 +31,11 @@ export default function ProdutoDetalhado(props: Props) {
         <p>{props.descricao}</p>
         <div className={styles.quantidadeContainer}>
           <span>Quantity</span>
-          <button>
+          <button onClick={diminuiQuantidade}>
             <AiFillMinusCircle />
           </button>
-          <p>0</p>
-          <button>
+          <p>{quantidade}</p>
+          <button onClick={aumentaQuantidade}>
             <AiFillPlusCircle />
           </button>
         </div>
