@@ -24,9 +24,7 @@ export default function DetalhesProduto() {
 
   if (data) dadosProduto = (data.products.data[0] || {}).attributes;
 
-  if (dadosProduto) dadosImagem = dadosProduto.image.data.attributes.formats.medium;
-
-  console.log(data);
+  if (dadosProduto) dadosImagem = dadosProduto.image.data.attributes.formats.large;
 
   return (
     <Galeria>
@@ -37,6 +35,7 @@ export default function DetalhesProduto() {
           descricao={dadosProduto.description}
           preco={dadosProduto.price}
           slug={dadosProduto.slug}
+          produto={dadosProduto}
         />
       ) : (
         <>
