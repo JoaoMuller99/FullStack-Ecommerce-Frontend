@@ -10,7 +10,7 @@ interface Props {
 export default function Produto(props: Props) {
   const { title, price, image } = props.produto;
 
-  const formatoFoto: "small" | "medium" | "large" | "thumbnail" = "small";
+  const formatoFoto: "small" | "medium" | "large" | "thumbnail" = "large";
 
   return (
     <div className={styles.container}>
@@ -24,8 +24,10 @@ export default function Produto(props: Props) {
           />
         </div>
       </Link>
-      <h2>{title}</h2>
-      <h3>{price}</h3>
+      <div className={styles.infosContainer}>
+        <h2>{title}</h2>
+        <h3>{price}</h3>
+      </div>
     </div>
   );
 }
