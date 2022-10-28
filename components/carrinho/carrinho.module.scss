@@ -1,0 +1,36 @@
+@import "../../styles/colors";
+
+$tempo-animacao: 250ms;
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: all $tempo-animacao ease-in-out;
+
+  main {
+    width: 30%;
+    background-color: $bg;
+    transform: translateX(100%);
+    transition: all $tempo-animacao ease-in-out;
+    padding: 2rem 5rem;
+    overflow-y: auto;
+  }
+}
+
+.container.exibir {
+  opacity: 1;
+  pointer-events: unset;
+
+  main {
+    transform: translateX(0%);
+  }
+}

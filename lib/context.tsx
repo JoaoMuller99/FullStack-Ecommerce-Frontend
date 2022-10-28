@@ -4,6 +4,7 @@ import { DadosProduto } from "../types/products";
 
 interface ContextValuesTypes {
   mostrarCarrinho: boolean;
+  alterarExibicaoCarrinho: (acao: "exibir" | "esconder") => void;
   itensCarrinho: any[];
   quantidadeItensCarrinho: number;
   adicionarAoCarrinho: (produto: DadosProduto, quantidade: number) => void;
@@ -13,7 +14,13 @@ interface ItemCarrinho extends DadosProduto {
   quantidade: number;
 }
 
-const initValues: ContextValuesTypes = { mostrarCarrinho: false, itensCarrinho: [], quantidadeItensCarrinho: 0, adicionarAoCarrinho: () => {} };
+const initValues: ContextValuesTypes = {
+  mostrarCarrinho: false,
+  alterarExibicaoCarrinho: () => {},
+  itensCarrinho: [],
+  quantidadeItensCarrinho: 0,
+  adicionarAoCarrinho: () => {},
+};
 
 const ShopContext = createContext(initValues);
 
@@ -25,6 +32,11 @@ export const StateContext = (props: { children: ReactNode }) => {
   useEffect(() => {
     setQuantidadeItensCarrinho(itensCarrinho.reduce((contador, valorAtual) => contador + valorAtual.quantidade, 0));
   }, [itensCarrinho]);
+
+  const alterarExibicaoCarrinho = (acao: "exibir" | "esconder") => {
+    if (acao === "exibir") setMostrarCarrinho(true);
+    else setMostrarCarrinho(false);
+  };
 
   const adicionarAoCarrinho = (produto: DadosProduto, quantidade: number) => {
     const indexProdutoJaAdicionado = itensCarrinho.findIndex((item) => produto.slug === item.slug);
@@ -39,7 +51,7 @@ export const StateContext = (props: { children: ReactNode }) => {
   };
 
   return (
-    <ShopContext.Provider value={{ mostrarCarrinho, itensCarrinho, quantidadeItensCarrinho, adicionarAoCarrinho }}>
+    <ShopContext.Provider value={{ mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, quantidadeItensCarrinho, adicionarAoCarrinho }}>
       {props.children}
     </ShopContext.Provider>
   );
