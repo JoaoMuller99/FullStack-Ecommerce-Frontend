@@ -2,16 +2,16 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 // Types
 import { DadosProduto } from "../types/products";
 
+interface ItemCarrinho extends DadosProduto {
+  quantidade: number;
+}
+
 interface ContextValuesTypes {
   mostrarCarrinho: boolean;
   alterarExibicaoCarrinho: (acao: "exibir" | "esconder") => void;
-  itensCarrinho: any[];
+  itensCarrinho: ItemCarrinho[];
   quantidadeItensCarrinho: number;
   adicionarAoCarrinho: (produto: DadosProduto, quantidade: number) => void;
-}
-
-interface ItemCarrinho extends DadosProduto {
-  quantidade: number;
 }
 
 const initValues: ContextValuesTypes = {
