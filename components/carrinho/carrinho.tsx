@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useShopContext } from "../../lib/context";
 // Icons
 import { FaShoppingCart } from "react-icons/fa";
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 // Styles
 import styles from "./carrinho.module.scss";
 
@@ -35,7 +36,17 @@ const Carrinho = () => {
                     <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
                     <div>
                       <h3>{item.title}</h3>
-                      <h3 className={styles.preco}>{item.price}</h3>
+                      <h3>{item.price}</h3>
+                      <div className={styles.quantidadeContainer}>
+                        <span>Quantidade</span>
+                        <button>
+                          <AiFillMinusCircle />
+                        </button>
+                        <p>{item.quantidade}</p>
+                        <button>
+                          <AiFillPlusCircle />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

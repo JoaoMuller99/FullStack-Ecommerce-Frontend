@@ -73,8 +73,32 @@ $tempo-animacao: 250ms;
           font-size: 0.9rem;
         }
 
-        h3.preco {
-          font-size: 0.8rem;
+        .quantidadeContainer {
+          display: flex;
+          align-items: center;
+
+          button {
+            background: transparent;
+            border: none;
+            display: flex;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0rem 1rem;
+          }
+
+          p {
+            width: 1rem;
+            text-align: center;
+          }
+
+          span {
+            color: $secundaria;
+            font-size: 0.9rem;
+          }
+
+          svg {
+            color: #494949;
+          }
         }
       }
     }
