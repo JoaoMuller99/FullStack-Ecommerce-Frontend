@@ -12,6 +12,7 @@ interface ContextValuesTypes {
   itensCarrinho: ItemCarrinho[];
   quantidadeItensCarrinho: number;
   adicionarAoCarrinho: (produto: DadosProduto, quantidade: number) => void;
+  removerDoCarrinho: (produto: ItemCarrinho) => void;
 }
 
 const initValues: ContextValuesTypes = {
@@ -20,6 +21,7 @@ const initValues: ContextValuesTypes = {
   itensCarrinho: [],
   quantidadeItensCarrinho: 0,
   adicionarAoCarrinho: () => {},
+  removerDoCarrinho: () => {},
 };
 
 const ShopContext = createContext(initValues);
@@ -50,8 +52,20 @@ export const StateContext = (props: { children: ReactNode }) => {
     }
   };
 
+  const removerDoCarrinho = (produto: ItemCarrinho) => {
+    if (produto.quantidade === 1) {
+      setItensCarrinho((prevState) => prevState.filter((item) => item.slug !== produto.slug));
+    } else {
+      setItensCarrinho((prevState) =>
+        prevState.map((item) => (item.slug === produto.slug ? { ...item, quantidade: item.quantidade - 1 } : item))
+      );
+    }
+  };
+
   return (
-    <ShopContext.Provider value={{ mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, quantidadeItensCarrinho, adicionarAoCarrinho }}>
+    <ShopContext.Provider
+      value={{ mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, quantidadeItensCarrinho, adicionarAoCarrinho, removerDoCarrinho }}
+    >
       {props.children}
     </ShopContext.Provider>
   );

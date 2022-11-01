@@ -9,7 +9,7 @@ import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import styles from "./carrinho.module.scss";
 
 const Carrinho = () => {
-  const { mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho } = useShopContext();
+  const { mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, adicionarAoCarrinho, removerDoCarrinho } = useShopContext();
 
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0];
@@ -39,11 +39,11 @@ const Carrinho = () => {
                       <h3>{item.price}</h3>
                       <div className={styles.quantidadeContainer}>
                         <span>Quantidade</span>
-                        <button>
+                        <button onClick={() => removerDoCarrinho(item)}>
                           <AiFillMinusCircle />
                         </button>
                         <p>{item.quantidade}</p>
-                        <button>
+                        <button onClick={() => adicionarAoCarrinho(item, 1)}>
                           <AiFillPlusCircle />
                         </button>
                       </div>
