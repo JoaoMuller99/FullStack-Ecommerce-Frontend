@@ -1,1 +1,7 @@
 $global-padding: 0rem 10%;
+
+@mixin small-desktop {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}

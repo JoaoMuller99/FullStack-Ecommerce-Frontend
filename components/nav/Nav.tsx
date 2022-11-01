@@ -2,7 +2,7 @@ import Link from "next/link";
 // Components
 import Carrinho from "../carrinho";
 // Icon
-import { FiShoppingBag } from "react-icons/fi";
+import { FaShoppingCart } from "react-icons/fa";
 // Context
 import { useShopContext } from "../../lib/context";
 // Styles
@@ -16,7 +16,7 @@ export default function Nav() {
       <Link href="/">iPad Store</Link>
       <div>
         <div onClick={() => alterarExibicaoCarrinho("exibir")}>
-          <FiShoppingBag />
+          <FaShoppingCart />
           <h3>Carrinho</h3>
         </div>
       </div>

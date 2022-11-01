@@ -2,6 +2,8 @@ import Image from "next/image";
 // Context
 import { useEffect } from "react";
 import { useShopContext } from "../../lib/context";
+// Icons
+import { FaShoppingCart } from "react-icons/fa";
 // Styles
 import styles from "./carrinho.module.scss";
 
@@ -21,8 +23,9 @@ const Carrinho = () => {
         <main onClick={(e) => e.stopPropagation()}>
           {itensCarrinho &&
             (itensCarrinho.length === 0 ? (
-              <div>
+              <div className={styles.carrinhoVazio}>
                 <h1>Você possui algumas compras para fazer 😉</h1>
+                <FaShoppingCart />
               </div>
             ) : (
               itensCarrinho.map((item) => {
