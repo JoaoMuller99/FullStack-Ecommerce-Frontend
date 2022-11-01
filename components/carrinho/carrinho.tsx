@@ -28,11 +28,11 @@ const Carrinho = () => {
               itensCarrinho.map((item) => {
                 const image = item.image.data.attributes.formats.thumbnail;
                 return (
-                  <div key={item.slug}>
+                  <div className={styles.item} key={item.slug}>
                     <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
                     <div>
                       <h3>{item.title}</h3>
-                      <h3>{item.price}</h3>
+                      <h3 className={styles.preco}>{item.price}</h3>
                     </div>
                   </div>
                 );

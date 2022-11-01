@@ -21,8 +21,41 @@ $tempo-animacao: 250ms;
     background-color: $bg;
     transform: translateX(100%);
     transition: all $tempo-animacao ease-in-out;
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     overflow-y: auto;
+    position: relative;
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      background-color: $fundo-produto;
+      padding: 2rem;
+      margin: 2rem 0rem;
+
+      img {
+        width: 8rem !important;
+        border-radius: 6px;
+      }
+
+      & > div {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        h3 {
+          font-size: 0.9rem;
+        }
+
+        h3.preco {
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }
 
