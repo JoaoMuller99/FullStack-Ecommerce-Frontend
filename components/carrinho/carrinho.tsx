@@ -1,10 +1,12 @@
 import Image from "next/image";
-// Context
 import { useEffect } from "react";
-import { useShopContext } from "../../lib/context";
+// Context
+import { useShopContext } from "lib/context";
 // Icons
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+// Util
+import { formataNumeroParaBRL } from "util/helpers";
 // Styles
 import styles from "./carrinho.module.scss";
 
@@ -36,7 +38,7 @@ const Carrinho = () => {
                     <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
                     <div>
                       <h3>{item.title}</h3>
-                      <h3>{item.price}</h3>
+                      <h3>{formataNumeroParaBRL(item.price)}</h3>
                       <div className={styles.quantidadeContainer}>
                         <span>Quantidade</span>
                         <button onClick={() => removerDoCarrinho(item)}>

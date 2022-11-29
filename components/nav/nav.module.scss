@@ -25,6 +25,22 @@
       align-items: center;
       cursor: pointer;
 
+      span {
+        background: $fundo-qtd-carrinho;
+        color: white;
+        width: 1.3rem;
+        height: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        position: absolute;
+        top: -20%;
+        right: 15%;
+        pointer-events: none;
+      }
+
       svg {
         font-size: 1.25rem;
         color: $secundaria;

@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { DadosProduto } from "../../types/products";
+// Types
+import { DadosProduto } from "types/products";
+// Util
+import { formataNumeroParaBRL } from "util/helpers";
+// Styles
 import styles from "./produto.module.scss";
 
 interface Props {
@@ -26,7 +30,7 @@ export default function Produto(props: Props) {
       </Link>
       <div className={styles.infosContainer}>
         <h2>{title}</h2>
-        <h3>{price}</h3>
+        <h3>{formataNumeroParaBRL(price)}</h3>
       </div>
     </div>
   );
