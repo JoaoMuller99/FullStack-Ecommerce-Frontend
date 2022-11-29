@@ -1,11 +1,11 @@
-import Image from "next/image";
+import { useState } from "react";
 // Types
 import { DadosProduto, Imagem } from "../../types/products";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+// Context
+import { useShopContext } from "lib/context";
 // Styles
 import styles from "./produto_detalhado.module.scss";
-import { useState } from "react";
-import { useShopContext } from "../../lib/context";
 
 interface Props {
   imagem: Imagem | undefined;

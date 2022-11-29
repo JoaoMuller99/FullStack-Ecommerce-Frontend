@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 // Types
-import { DadosProduto } from "../types/products";
+import { DadosProduto } from "types/products";
 
 interface ItemCarrinho extends DadosProduto {
   quantidade: number;
@@ -64,7 +64,14 @@ export const StateContext = (props: { children: ReactNode }) => {
 
   return (
     <ShopContext.Provider
-      value={{ mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, quantidadeItensCarrinho, adicionarAoCarrinho, removerDoCarrinho }}
+      value={{
+        mostrarCarrinho,
+        alterarExibicaoCarrinho,
+        itensCarrinho,
+        quantidadeItensCarrinho,
+        adicionarAoCarrinho,
+        removerDoCarrinho,
+      }}
     >
       {props.children}
     </ShopContext.Provider>

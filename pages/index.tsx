@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 // Components
-import Loader from "../components/loader/loader";
-import Galeria from "../components/galeria";
-import Produto from "../components/produto";
+import Loader from "components/loader/loader";
+import Galeria from "components/galeria";
+import Produto from "components/produto";
 // Query for URQL
 import { useQuery } from "urql";
-import { PRODUCT_QUERY } from "../lib/query";
+import { PRODUCT_QUERY } from "lib/query";
 // Types
-import { Produtos } from "../types/products";
+import { Produtos } from "types/products";
 
 const Home: NextPage = () => {
   const [resultado] = useQuery<Produtos>({ query: PRODUCT_QUERY });

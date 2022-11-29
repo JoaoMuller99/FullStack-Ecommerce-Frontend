@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 // Components
-import Loader from "../../components/loader";
-import Galeria from "../../components/galeria";
-import ProdutoDetalhado from "../../components/detalhes_produto";
+import Loader from "components/loader";
+import Galeria from "components/galeria";
+import ProdutoDetalhado from "components/detalhes_produto";
 // Query for URQL
 import { useQuery } from "urql";
-import { GET_PRODUCT_QUERY } from "../../lib/query";
+import { GET_PRODUCT_QUERY } from "lib/query";
 // Types
-import { DadosProduto, Imagem, Produtos } from "../../types/products";
+import { DadosProduto, Imagem, Produtos } from "types/products";
 
 export default function DetalhesProduto() {
   const router = useRouter();

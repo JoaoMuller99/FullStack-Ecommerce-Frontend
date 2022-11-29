@@ -1,12 +1,12 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
 // Components
-import Nav from "../components/nav";
+import Nav from "components/nav";
 // Lib
 import { Provider, createClient } from "urql";
-import { StateContext } from "../lib/context";
+import { StateContext } from "lib/context";
 // Global styles
-import "../styles/globals.scss";
+import "styles/globals.scss";
 
 const client = createClient({ url: process.env.NEXT_PUBLIC_BACKEND_API || "" });
 
