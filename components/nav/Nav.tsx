@@ -5,11 +5,13 @@ import Carrinho from "../carrinho";
 import { FaShoppingCart } from "react-icons/fa";
 // Context
 import { useShopContext } from "lib/context";
+// Libs
+import { AnimatePresence } from "framer-motion";
 // Styles
 import styles from "./nav.module.scss";
 
 export default function Nav() {
-  const { alterarExibicaoCarrinho, quantidadeItensCarrinho } = useShopContext();
+  const { alterarExibicaoCarrinho, quantidadeItensCarrinho, mostrarCarrinho } = useShopContext();
 
   return (
     <nav className={styles.nav}>
@@ -21,7 +23,7 @@ export default function Nav() {
           <h3>Carrinho</h3>
         </div>
       </div>
-      <Carrinho />
+      <AnimatePresence>{mostrarCarrinho && <Carrinho />}</AnimatePresence>
     </nav>
   );
 }

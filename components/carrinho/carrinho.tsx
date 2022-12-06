@@ -36,62 +36,60 @@ const Carrinho = () => {
   }, [mostrarCarrinho]);
 
   return (
-    <>
-      {mostrarCarrinho && (
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className={styles.container}
-          onClick={() => alterarExibicaoCarrinho("esconder")}
-        >
-          <motion.main
-            initial={{ x: "100%" }}
-            animate={{ x: "0%" }}
-            transition={{ ease: "easeInOut", duration: 0.25 }}
-            onClick={(e: any) => e.stopPropagation()}
-          >
-            {itensCarrinho &&
-              (itensCarrinho.length === 0 ? (
-                <motion.div variants={animation} animate="animate" initial="initial" className={styles.carrinhoVazio}>
-                  <h1>Você possui algumas compras para fazer 😉</h1>
-                  <FaShoppingCart />
-                </motion.div>
-              ) : (
-                <>
-                  <div className={styles.itensContainer}>
-                    {itensCarrinho.map((item) => {
-                      const image = item.image.data.attributes.formats.thumbnail;
-                      return (
-                        <motion.div variants={animation} animate="animate" initial="initial" className={styles.item} key={item.slug}>
-                          <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
-                          <div>
-                            <h3>{item.title}</h3>
-                            <h3>{formataNumeroParaBRL(item.price)}</h3>
-                            <div className={styles.quantidadeContainer}>
-                              <span>Quantidade</span>
-                              <button onClick={() => removerDoCarrinho(item)}>
-                                <AiFillMinusCircle />
-                              </button>
-                              <p>{item.quantidade}</p>
-                              <button onClick={() => adicionarAoCarrinho(item, 1)}>
-                                <AiFillPlusCircle />
-                              </button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                  <div className={styles.checkout}>
-                    <h3>Subtotal: {formataNumeroParaBRL(valorTotalCarrinho)}</h3>
-                    <button type="button">Finalizar compra</button>
-                  </div>
-                </>
-              ))}
-          </motion.main>
-        </motion.section>
-      )}
-    </>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.container}
+      onClick={() => alterarExibicaoCarrinho("esconder")}
+    >
+      <motion.main
+        initial={{ x: "100%" }}
+        animate={{ x: "0%" }}
+        exit={{ x: "100%" }}
+        transition={{ ease: "easeInOut", duration: 0.25 }}
+        onClick={(e: any) => e.stopPropagation()}
+      >
+        {itensCarrinho &&
+          (itensCarrinho.length === 0 ? (
+            <motion.div variants={animation} animate="animate" initial="initial" className={styles.carrinhoVazio}>
+              <h1>Você possui algumas compras para fazer 😉</h1>
+              <FaShoppingCart />
+            </motion.div>
+          ) : (
+            <>
+              <div className={styles.itensContainer}>
+                {itensCarrinho.map((item) => {
+                  const image = item.image.data.attributes.formats.thumbnail;
+                  return (
+                    <motion.div variants={animation} animate="animate" initial="initial" className={styles.item} key={item.slug}>
+                      <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
+                      <div>
+                        <h3>{item.title}</h3>
+                        <h3>{formataNumeroParaBRL(item.price)}</h3>
+                        <div className={styles.quantidadeContainer}>
+                          <span>Quantidade</span>
+                          <button onClick={() => removerDoCarrinho(item)}>
+                            <AiFillMinusCircle />
+                          </button>
+                          <p>{item.quantidade}</p>
+                          <button onClick={() => adicionarAoCarrinho(item, 1)}>
+                            <AiFillPlusCircle />
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <motion.div variants={animation} animate="animate" initial="initial" className={styles.checkout}>
+                <h3>Subtotal: {formataNumeroParaBRL(valorTotalCarrinho)}</h3>
+                <button type="button">Finalizar compra</button>
+              </motion.div>
+            </>
+          ))}
+      </motion.main>
+    </motion.section>
   );
 };
 
