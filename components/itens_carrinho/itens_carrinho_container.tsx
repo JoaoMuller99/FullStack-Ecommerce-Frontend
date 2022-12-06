@@ -32,11 +32,11 @@ const ItensCarrinhoContainer = (props: Props) => {
   const { itensCarrinho, adicionarAoCarrinho, removerDoCarrinho } = useShopContext();
 
   return (
-    <motion.div variants={itensContainerAnimation} animate="animate" initial="initial" className={styles.itensContainer}>
+    <motion.div variants={itensContainerAnimation} animate="animate" initial="initial" layout className={styles.itensContainer}>
       {itensCarrinho.map((item) => {
         const image = item.image.data.attributes.formats.thumbnail;
         return (
-          <motion.div variants={props.itemAnimation} className={styles.item} key={item.slug}>
+          <motion.div layout variants={props.itemAnimation} className={styles.item} key={item.slug}>
             <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
             <div>
               <h3>{item.title}</h3>
