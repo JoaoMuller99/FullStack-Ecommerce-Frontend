@@ -13,6 +13,7 @@ interface ContextValuesTypes {
   quantidadeItensCarrinho: number;
   adicionarAoCarrinho: (produto: DadosProduto, quantidade: number) => void;
   removerDoCarrinho: (produto: ItemCarrinho) => void;
+  valorTotalCarrinho: number;
 }
 
 const initValues: ContextValuesTypes = {
@@ -22,6 +23,7 @@ const initValues: ContextValuesTypes = {
   quantidadeItensCarrinho: 0,
   adicionarAoCarrinho: () => {},
   removerDoCarrinho: () => {},
+  valorTotalCarrinho: 0,
 };
 
 const ShopContext = createContext(initValues);
@@ -30,9 +32,11 @@ export const StateContext = (props: { children: ReactNode }) => {
   const [mostrarCarrinho, setMostrarCarrinho] = useState<boolean>(false);
   const [itensCarrinho, setItensCarrinho] = useState<ItemCarrinho[]>([]);
   const [quantidadeItensCarrinho, setQuantidadeItensCarrinho] = useState<number>(0);
+  const [valorTotalCarrinho, setValorTotalCarrinho] = useState<number>(0);
 
   useEffect(() => {
     setQuantidadeItensCarrinho(itensCarrinho.reduce((contador, valorAtual) => contador + valorAtual.quantidade, 0));
+    setValorTotalCarrinho(itensCarrinho.reduce((contador, valorAtual) => contador + valorAtual.price * valorAtual.quantidade, 0));
   }, [itensCarrinho]);
 
   const alterarExibicaoCarrinho = (acao: "exibir" | "esconder") => {
@@ -71,6 +75,7 @@ export const StateContext = (props: { children: ReactNode }) => {
         quantidadeItensCarrinho,
         adicionarAoCarrinho,
         removerDoCarrinho,
+        valorTotalCarrinho,
       }}
     >
       {props.children}

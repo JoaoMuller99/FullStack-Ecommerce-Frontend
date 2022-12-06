@@ -13,17 +13,14 @@ $tempo-animacao: 250ms;
   z-index: 999;
   display: flex;
   justify-content: flex-end;
-  opacity: 0;
-  pointer-events: none;
-  transition: all $tempo-animacao ease-in-out;
 
   main {
     width: 30%;
     background-color: $bg;
-    transform: translateX(100%);
-    transition: all $tempo-animacao ease-in-out;
     padding: 2rem 3rem;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
 
     .carrinhoVazio {
@@ -47,70 +44,81 @@ $tempo-animacao: 250ms;
       }
     }
 
-    .item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      border-radius: 1rem;
-      overflow: hidden;
-      background-color: $fundo-produto;
-      padding: 2rem;
-      margin: 2rem 0rem;
+    .itensContainer {
+      flex-grow: 1;
+      overflow-y: auto;
 
-      img {
-        width: 8rem !important;
-        border-radius: 6px;
-      }
-
-      & > div {
-        width: 60%;
+      .item {
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        background-color: $fundo-produto;
+        padding: 2rem;
+        margin: 2rem 0rem;
 
-        h3 {
-          font-size: 0.9rem;
+        img {
+          width: 8rem !important;
+          border-radius: 6px;
         }
 
-        .quantidadeContainer {
+        & > div {
+          width: 60%;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          gap: 0.5rem;
 
-          button {
-            background: transparent;
-            border: none;
-            display: flex;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0rem 1rem;
-          }
-
-          p {
-            width: 1rem;
-            text-align: center;
-          }
-
-          span {
-            color: $secundaria;
+          h3 {
             font-size: 0.9rem;
           }
 
-          svg {
-            color: #494949;
+          .quantidadeContainer {
+            display: flex;
+            align-items: center;
+
+            button {
+              background: transparent;
+              border: none;
+              display: flex;
+              font-size: 1.5rem;
+              cursor: pointer;
+              padding: 0rem 1rem;
+            }
+
+            p {
+              width: 1rem;
+              text-align: center;
+            }
+
+            span {
+              color: $secundaria;
+              font-size: 0.9rem;
+            }
+
+            svg {
+              color: #494949;
+            }
           }
         }
       }
     }
-  }
-}
 
-.container.exibir {
-  opacity: 1;
-  pointer-events: unset;
-
-  main {
-    transform: translateX(0%);
+    .checkout {
+      padding-top: 1rem;
+      & > button {
+        background: $primaria;
+        padding: 1rem 2rem;
+        width: 100%;
+        color: white;
+        margin: 2rem 0rem;
+        border: none;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    }
   }
 }
 
