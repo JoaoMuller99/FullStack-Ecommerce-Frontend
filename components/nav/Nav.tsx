@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 // Context
 import { useShopContext } from "lib/context";
 // Libs
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Styles
 import styles from "./nav.module.scss";
 
@@ -18,7 +18,11 @@ export default function Nav() {
       <Link href="/">iPad Store</Link>
       <div>
         <div onClick={() => alterarExibicaoCarrinho("exibir")}>
-          {quantidadeItensCarrinho > 0 && <span>{quantidadeItensCarrinho}</span>}
+          {quantidadeItensCarrinho > 0 && (
+            <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }}>
+              {quantidadeItensCarrinho}
+            </motion.span>
+          )}
           <FaShoppingCart />
           <h3>Carrinho</h3>
         </div>
