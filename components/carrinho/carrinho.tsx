@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { formataNumeroParaBRL } from "util/helpers";
 // Styles
 import styles from "./carrinho.module.scss";
+import { getStripe } from "lib/getStripe";
 
 const itemAnimation = {
   initial: {
@@ -25,6 +26,20 @@ const itemAnimation = {
 
 const Carrinho = () => {
   const { mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, valorTotalCarrinho } = useShopContext();
+
+  const handleCompra = async () => {
+    const stripe = await getStripe();
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(itensCarrinho),
+    });
+
+    const data = await response.json();
+    if (stripe) {
+      await stripe.redirectToCheckout({ sessionId: data.id });
+    }
+  };
 
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0];
@@ -65,7 +80,9 @@ const Carrinho = () => {
               <ItensCarrinhoContainer itemAnimation={itemAnimation} />
               <motion.div variants={itemAnimation} animate="animate" initial="initial" transition={{ delay: 0.25 }} className={styles.checkout}>
                 <h3>Subtotal: {formataNumeroParaBRL(valorTotalCarrinho)}</h3>
-                <button type="button">Finalizar compra</button>
+                <button onClick={handleCompra} type="button">
+                  Finalizar compra
+                </button>
               </motion.div>
             </>
           ))}
