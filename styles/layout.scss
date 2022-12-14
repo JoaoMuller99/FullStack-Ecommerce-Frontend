@@ -1,4 +1,11 @@
 $global-padding: 0rem 10%;
+$global-padding-mobile: 0rem 0%;
+
+@mixin tablet {
+  @media screen and (max-width: 1023px) {
+    @content;
+  }
+}
 
 @mixin small-desktop {
   @media screen and (min-width: 1024px) {

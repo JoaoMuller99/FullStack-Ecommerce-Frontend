@@ -1,4 +1,5 @@
 @import "./colors";
+@import "./layout";
 
 * {
   padding: 0;
@@ -11,7 +12,7 @@
 html,
 body {
   background-color: $bg;
-  margin: 0rem 10%;
+  margin: $global-padding;
 }
 
 h2 {
@@ -31,4 +32,10 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@include tablet {
+  body {
+    margin: $global-padding-mobile;
+  }
 }
