@@ -23,6 +23,16 @@ $tempo-animacao: 250ms;
     justify-content: space-between;
     position: relative;
 
+    .sair {
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      top: 1rem;
+      left: 3.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
     .carrinhoVazio {
       position: absolute;
       top: 0;
@@ -57,6 +67,25 @@ $tempo-animacao: 250ms;
         font-size: 1rem;
         border-radius: 6px;
         cursor: pointer;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    main {
+      width: 100%;
+      padding: 2rem 1rem;
+
+      .sair {
+        left: 1.4rem;
+      }
+
+      .carrinhoVazio {
+        h1 {
+          text-align: center;
+        }
       }
     }
   }

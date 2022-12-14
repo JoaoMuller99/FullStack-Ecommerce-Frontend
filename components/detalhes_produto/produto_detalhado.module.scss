@@ -1,4 +1,5 @@
-@import "../../styles/colors";
+@import "styles/colors";
+@import "styles/layout";
 
 .container {
   display: flex;
@@ -63,5 +64,25 @@
     color: white;
     font-weight: 500;
     border-radius: 6px;
+  }
+}
+
+@include tablet {
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    picture {
+      width: unset;
+    }
+
+    .infoContainer {
+      width: unset;
+
+      & > p {
+        text-align: justify;
+      }
+    }
   }
 }

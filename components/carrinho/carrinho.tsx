@@ -63,6 +63,9 @@ const Carrinho = () => {
         transition={{ ease: "easeInOut", duration: 0.25 }}
         onClick={(e: any) => e.stopPropagation()}
       >
+        <button onClick={() => alterarExibicaoCarrinho("esconder")} className={styles.sair} type="button">
+          Fechar
+        </button>
         {itensCarrinho &&
           (itensCarrinho.length === 0 ? (
             <motion.div
