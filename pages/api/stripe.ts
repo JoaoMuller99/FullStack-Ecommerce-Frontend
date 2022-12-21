@@ -31,6 +31,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         submit_type: "pay",
         mode: "payment",
         payment_method_types: ["card"],
+        shipping_address_collection: {
+          allowed_countries: ["US", "BR", "CA"],
+        },
+        shipping_options: [{ shipping_rate: "shr_1MHGDVK9DokjmV1Ysy3KllHF" }],
+        allow_promotion_codes: true,
         line_items: req.body.map((item: Dados) => {
           return {
             price_data: {
