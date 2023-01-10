@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // Components
 import ItensCarrinhoContainer from "components/itens_carrinho";
+import Loader from "components/loader";
 // Context
 import { useShopContext } from "lib/context";
 // Icons
 import { FaShoppingCart } from "react-icons/fa";
 // Libs
 import { motion } from "framer-motion";
+import { getStripe } from "lib/getStripe";
 // Util
 import { formataNumeroParaBRL } from "util/helpers";
 // Styles
 import styles from "./carrinho.module.scss";
-import { getStripe } from "lib/getStripe";
 
 const itemAnimation = {
   initial: {
@@ -26,18 +27,25 @@ const itemAnimation = {
 
 const Carrinho = () => {
   const { mostrarCarrinho, alterarExibicaoCarrinho, itensCarrinho, valorTotalCarrinho } = useShopContext();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleCompra = async () => {
-    const stripe = await getStripe();
-    const response = await fetch("/api/stripe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(itensCarrinho),
-    });
+    try {
+      setIsLoading(true);
+      const stripe = await getStripe();
+      const response = await fetch("/api/stripe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(itensCarrinho),
+      });
 
-    const data = await response.json();
-    if (stripe) {
-      await stripe.redirectToCheckout({ sessionId: data.id });
+      const data = await response.json();
+      if (stripe) {
+        await stripe.redirectToCheckout({ sessionId: data.id });
+      }
+    } catch (e) {
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -47,6 +55,8 @@ const Carrinho = () => {
     if (mostrarCarrinho) body.style.overflow = "hidden";
     else body.style.overflow = "auto";
   }, [mostrarCarrinho]);
+
+  if (isLoading) return <Loader />;
 
   return (
     <motion.section

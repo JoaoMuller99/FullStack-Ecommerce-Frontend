@@ -46,6 +46,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               },
               unit_amount: item.price * 100,
             },
+            adjustable_quantity: {
+              enabled: true,
+              minimum: 1,
+            },
             quantity: item.quantidade,
           };
         }),
