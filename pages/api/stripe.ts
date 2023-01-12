@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           };
         }),
         cancel_url: `${req.headers.origin}/canceled`,
-        success_url: `${req.headers.origin}/success`,
+        success_url: `${req.headers.origin}/success?&session_id={CHECKOUT_SESSION_ID}`,
       });
 
       res.status(200).json(session);
