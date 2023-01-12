@@ -53,7 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             quantity: item.quantidade,
           };
         }),
-        cancel_url: `${req.headers.origin}/canceled`,
+        cancel_url: `${req.headers.origin}/`,
         success_url: `${req.headers.origin}/success?&session_id={CHECKOUT_SESSION_ID}`,
       });
 
