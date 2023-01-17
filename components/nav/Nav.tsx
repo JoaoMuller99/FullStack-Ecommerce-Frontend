@@ -1,12 +1,13 @@
 import Link from "next/link";
 // Components
+import Usuario from "components/usuario";
 import Carrinho from "../carrinho";
 // Icon
 import { FaShoppingCart } from "react-icons/fa";
 // Context
 import { useShopContext } from "lib/context";
 // Libs
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 // Styles
 import styles from "./nav.module.scss";
 
@@ -17,7 +18,8 @@ export default function Nav() {
     <nav className={styles.nav}>
       <Link href="/">iPad Store</Link>
       <div>
-        <div onClick={() => alterarExibicaoCarrinho("exibir")}>
+        <Usuario />
+        <div className={styles.carrinho} onClick={() => alterarExibicaoCarrinho("exibir")}>
           {quantidadeItensCarrinho > 0 && (
             <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }}>
               {quantidadeItensCarrinho}

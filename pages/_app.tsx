@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Loader from "components/loader";
 import Nav from "components/nav";
 // Lib
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { StateContext } from "lib/context";
 import { createClient, Provider } from "urql";
 // Global styles
@@ -39,23 +40,25 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <StateContext>
-      <Provider value={client}>
-        <Head>
-          <title>The iPad Store</title>
-          <meta name="description" content="The best place to buy your iPad" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <Nav />
-            <Component {...pageProps} />
-          </>
-        )}
-      </Provider>
-    </StateContext>
+    <UserProvider>
+      <StateContext>
+        <Provider value={client}>
+          <Head>
+            <title>The iPad Store</title>
+            <meta name="description" content="The best place to buy your iPad" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          {loading ? (
+            <Loader />
+          ) : (
+            <>
+              <Nav />
+              <Component {...pageProps} />
+            </>
+          )}
+        </Provider>
+      </StateContext>
+    </UserProvider>
   );
 }
 
