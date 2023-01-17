@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 // Lib
+import { getSession } from "@auth0/nextjs-auth0";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || "", { apiVersion: "2022-11-15" });
@@ -25,11 +26,15 @@ interface Dados {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
+  const session = await getSession(req, res);
+  const stripeId: string | undefined = session?.user["http://localhost:3000/stripe_customer_id"];
+
   if (req.method === "POST") {
     try {
       const session = await stripe.checkout.sessions.create({
         submit_type: "pay",
         mode: "payment",
+        customer: stripeId,
         payment_method_types: ["card"],
         shipping_address_collection: {
           allowed_countries: ["US", "BR", "CA"],
