@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 // Types
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
@@ -32,36 +33,41 @@ export default function ProdutoDetalhado(props: Props) {
   };
 
   return (
-    <div className={styles.container}>
-      {props.imagem && (
-        <picture>
-          <source srcSet={props.imagem.url} type={props.imagem.mime} />
-          <img src={props.imagem.url} alt={props.imagem.name} />
-        </picture>
-      )}
-      <div className={styles.infoContainer}>
-        <h3>{props.titulo}</h3>
-        <p>{props.descricao}</p>
-        <div className={styles.quantidadeContainer}>
-          <span>Quantidade</span>
-          <button onClick={diminuiQuantidade}>
-            <AiFillMinusCircle />
-          </button>
-          <p>{quantidade}</p>
-          <button onClick={aumentaQuantidade}>
-            <AiFillPlusCircle />
+    <>
+      <Head>
+        <title>The iPad Store - {props.titulo}</title>
+      </Head>
+      <div className={styles.container}>
+        {props.imagem && (
+          <picture>
+            <source srcSet={props.imagem.url} type={props.imagem.mime} />
+            <img src={props.imagem.url} alt={props.imagem.name} />
+          </picture>
+        )}
+        <div className={styles.infoContainer}>
+          <h3>{props.titulo}</h3>
+          <p>{props.descricao}</p>
+          <div className={styles.quantidadeContainer}>
+            <span>Quantidade</span>
+            <button onClick={diminuiQuantidade}>
+              <AiFillMinusCircle />
+            </button>
+            <p>{quantidade}</p>
+            <button onClick={aumentaQuantidade}>
+              <AiFillPlusCircle />
+            </button>
+          </div>
+          <button
+            className={styles.botaoAdicionar}
+            onClick={() => {
+              adicionarAoCarrinho({ ...props.produto }, quantidade);
+              notificacao();
+            }}
+          >
+            Adicionar ao carrinho
           </button>
         </div>
-        <button
-          className={styles.botaoAdicionar}
-          onClick={() => {
-            adicionarAoCarrinho({ ...props.produto }, quantidade);
-            notificacao();
-          }}
-        >
-          Adicionar ao carrinho
-        </button>
       </div>
-    </div>
+    </>
   );
 }
