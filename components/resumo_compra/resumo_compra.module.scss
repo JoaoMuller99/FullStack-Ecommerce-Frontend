@@ -1,0 +1,22 @@
+@import "styles/colors";
+
+.container {
+  background-color: $fundo-produto;
+  margin: 2rem 0rem;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-radius: 6px;
+
+  h2 {
+    font-weight: 600;
+
+    span {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+}

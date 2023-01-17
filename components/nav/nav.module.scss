@@ -53,3 +53,13 @@
     }
   }
 }
+
+@include tablet {
+  .nav {
+    & > div {
+      & > .carrinho {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ export default function Usuario() {
   return (
     <div onClick={() => router.push("/perfil")} className={styles.container}>
       {user.picture ? <Image src={user.picture} width="24" height="24" alt={user.name || ""} /> : <FaUserCircle />}
-      <h3>{user.name}</h3>
+      <h3>{user.name?.split(" ")[0]}</h3>
     </div>
   );
 }
