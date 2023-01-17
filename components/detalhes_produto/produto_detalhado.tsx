@@ -1,9 +1,11 @@
 import { useState } from "react";
 // Types
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { DadosProduto, Imagem } from "../../types/products";
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 // Context
 import { useShopContext } from "lib/context";
+// Util
+import { notificacao } from "util/helpers";
 // Styles
 import styles from "./produto_detalhado.module.scss";
 
@@ -50,7 +52,13 @@ export default function ProdutoDetalhado(props: Props) {
             <AiFillPlusCircle />
           </button>
         </div>
-        <button className={styles.botaoAdicionar} onClick={() => adicionarAoCarrinho({ ...props.produto }, quantidade)}>
+        <button
+          className={styles.botaoAdicionar}
+          onClick={() => {
+            adicionarAoCarrinho({ ...props.produto }, quantidade);
+            notificacao();
+          }}
+        >
           Adicionar ao carrinho
         </button>
       </div>

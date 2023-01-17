@@ -8,6 +8,7 @@ import Nav from "components/nav";
 // Lib
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { StateContext } from "lib/context";
+import { Toaster } from "react-hot-toast";
 import { createClient, Provider } from "urql";
 // Global styles
 import "styles/globals.scss";
@@ -19,12 +20,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const start = () => {
-      console.log("start");
       setLoading(true);
     };
 
     const end = () => {
-      console.log("end");
       setLoading(false);
     };
 
@@ -52,6 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Loader />
           ) : (
             <>
+              <Toaster />
               <Nav />
               <Component {...pageProps} />
             </>
