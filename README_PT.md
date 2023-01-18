@@ -1,8 +1,18 @@
 # BEM-VINDO || WELCOME
 
-Esse é um projeto [Next.js](https://nextjs.org/) criado com [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 **To read this README in english click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Frontend/blob/main/README.md)!**
+
+## Esse projeto foi construído com
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Stripe](https://stripe.com/)
+- [Auth0](https://auth0.com/)
+- [URQL](https://www.npmjs.com/package/urql)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- [Sass](https://sass-lang.com/)
 
 **Para esse projeto funcionar, você precisará clonar e rodar [esse](https://github.com/JoaoMuller99/FullStack-Ecommerce-Backend) código também!**
 
