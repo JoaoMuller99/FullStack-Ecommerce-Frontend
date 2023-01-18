@@ -70,3 +70,5 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+This project was created for educational purposes only, so feel free to make some tweaks if you want to. Thank you so much for trying it out!

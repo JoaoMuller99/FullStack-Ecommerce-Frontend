@@ -1,6 +1,6 @@
 # BEM-VINDO || WELCOME
 
-**To read this README in english click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Frontend/blob/main/README.md)!**
+**To read this README in english click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Frontend)!**
 
 ## Esse projeto foi construído com
 
@@ -70,3 +70,5 @@ yarn dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+
+Esse projeto foi criado apenas por propósitos educacionais, então sinta-se livre pra fazer qualquer alteração que achar necessário. Muito obrigado por testar esse projeto!
