@@ -2,6 +2,10 @@
 
 **To read this README in english click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Frontend)!**
 
+## Veja o vídeo da demo abaixo:
+
+[![image](https://user-images.githubusercontent.com/80433203/220348256-065af9e6-6efc-4923-96ab-58073f0fed36.png)](https://www.youtube.com/watch?v=SGHfFzSTKGM&t=)
+
 ## Esse projeto foi construído com
 
 - [Next.js](https://nextjs.org/)
