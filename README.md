@@ -65,7 +65,7 @@ Allowed Web URLs: "http://localhost:3000"
 
 ## Finally
 
-With the backend cofigured and running (click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Backend) for more information), you can start the development server:
+With the backend configured and running (click [here](https://github.com/JoaoMuller99/FullStack-Ecommerce-Backend) for more information), you can start the development server:
 
 ```bash
 npm run dev
